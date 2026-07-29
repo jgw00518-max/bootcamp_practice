@@ -51,6 +51,15 @@ class _HomeState extends State<Home> {
     );
   } // build
     // Functions
+    void _onClick(){
+      if(switchValue == true){
+        buttonColor = Colors.red;
+        switchValue = false;
+      }else{
+        buttonColor = Colors.blue;
+        switchValue = true;
+      }
+    }
 
     void _switchAction(bool value){
       if(value == true){
@@ -61,16 +70,5 @@ class _HomeState extends State<Home> {
       setState(() {});
     }
 
-    void _onClick(){
-      if(switchValue == true){
-        buttonColor = Colors.red;
-        switchValue = false;
-      }else{
-        buttonColor = Colors.blue;
-        switchValue = true;
-      }
-      setState(() {
-        
-      });
-    }
+
 } // class 
