@@ -9,18 +9,18 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   // Property
-  late TextEditingController num1Controller;
-  late TextEditingController num2Controller;
-  late TextEditingController sumresult;
-  late TextEditingController removeresult;
-  late TextEditingController multiresult;
-  late TextEditingController divisionresult;
+  late TextEditingController num1Controller;  // 첫 번째 숫자
+  late TextEditingController num2Controller;  // 두 번째 숫자
+  late TextEditingController sumresult;       // 덧셈 결과
+  late TextEditingController removeresult;    // 뺄셈 결과
+  late TextEditingController multiresult;     // 곱셈 결과
+  late TextEditingController divisionresult;  // 나눗셈 결과
 
   @override
   void initState() {
     super.initState();
     num1Controller = TextEditingController(); // 생성자
-    num2Controller = TextEditingController(); // 생성자
+    num2Controller = TextEditingController();
     sumresult = TextEditingController();
     removeresult = TextEditingController();
     multiresult = TextEditingController();
@@ -127,7 +127,7 @@ class _HomeState extends State<Home> {
 
   // ---- Functions ----
 
-
+  // snackBar Function
   void _snackBar(String message, Color color){    // 함수 하나로 합치기
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -138,6 +138,7 @@ class _HomeState extends State<Home> {
     );
   }
 
+  // 계산 function
   void calcAction (){
     if(num1Controller.text.trim().isNotEmpty && num2Controller.text.trim().isNotEmpty){
     int num1 = int.parse(num1Controller.text.trim());
@@ -164,8 +165,9 @@ class _HomeState extends State<Home> {
     }
   }
 
+  // 지우기 function
   void clearAction(){
-    num1Controller.text = "";
+    num1Controller.text = ""; // num1Controller.clear(); 와 같은 방법
     num2Controller.text = "";
     sumresult.text = "";
     removeresult.text = "";
