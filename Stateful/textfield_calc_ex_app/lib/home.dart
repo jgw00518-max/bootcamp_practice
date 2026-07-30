@@ -208,7 +208,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  // 계산 function
+  // 계산 function 실행
   void calcAction (){
     if(num1Controller.text.trim().isNotEmpty && num2Controller.text.trim().isNotEmpty){
       calcResult();
@@ -217,6 +217,7 @@ class _HomeState extends State<Home> {
     }
   }
 
+  // 계산 function
   void calcResult() {
     int num1 = int.parse(num1Controller.text.trim());
     int num2 = int.parse(num2Controller.text.trim());
@@ -232,8 +233,8 @@ class _HomeState extends State<Home> {
       if (num2 == 0) {
         divSwitchReserve = "Impossible";
       } else {
-        double division = num1 / num2;
-        divSwitchReserve = division.toString();
+        double div = num1 / num2;
+        divSwitchReserve = div.toString();
       }
     switchCheck();
   }
@@ -255,6 +256,7 @@ class _HomeState extends State<Home> {
     setState(() {});
   }
 
+  // 스위치 상태 체크 
   void switchCheck(){
     sumresult.text = addSwitch ? addSwitchReserve : "";
     removeresult.text = subSwitch ? subSwitchReserve : "";
