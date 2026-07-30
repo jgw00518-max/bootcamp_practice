@@ -16,6 +16,16 @@ class _HomeState extends State<Home> {
   late TextEditingController multiresult;     // 곱셈 결과
   late TextEditingController divisionresult;  // 나눗셈 결과
 
+  late bool addSwitch; // 덧셈 Switch
+  late bool subSwitch; // 뺄셈 Switch
+  late bool mulSwitch; // 곱셈 Switch
+  late bool divSwitch; // 나눗셈 Switch
+
+  late String addSwitchReserve; // 덧셈 결과 보관용
+  late String subSwitchReserve; // 뺄셈 결과 보관용
+  late String mulSwitchReserve; // 곱셈 결과 보관용
+  late String divSwitchReserve; // 나눗셈 결과 보관용
+
   @override
   void initState() {
     super.initState();
@@ -25,6 +35,16 @@ class _HomeState extends State<Home> {
     removeresult = TextEditingController();
     multiresult = TextEditingController();
     divisionresult = TextEditingController();
+
+    addSwitch = true;
+    subSwitch = true;
+    mulSwitch = true;
+    divSwitch = true;
+
+    addSwitchReserve = "";
+    subSwitchReserve = "";
+    mulSwitchReserve = "";
+    divSwitchReserve = "";
   }
 
   @override
@@ -42,6 +62,7 @@ class _HomeState extends State<Home> {
           child: Column(
             children: [
               TextField(
+                textAlign: TextAlign.end,             // 오른쪽 정렬 (숫자는 항상 오른쪽 정렬)
                 controller: num1Controller,
                 decoration: InputDecoration(
                   labelText: '첫번째 숫자를 입력하세요',
@@ -49,6 +70,7 @@ class _HomeState extends State<Home> {
                 keyboardType: TextInputType.number,
               ),
               TextField(
+                textAlign: TextAlign.end,
                 controller: num2Controller,
                 decoration: InputDecoration(
                   labelText: '두번째 숫자를 입력하세요',
@@ -88,35 +110,83 @@ class _HomeState extends State<Home> {
                   ),
                 ],
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("덧셈"),
+                  Switch(
+                    value: addSwitch, 
+                    onChanged: (value) {
+                      addSwitch = value;
+                      switchCheck();
+                    },
+                  ),
+                  Text("뺄셈"),
+                  Switch(
+                    value: subSwitch, 
+                    onChanged: (value) {
+                      subSwitch = value;
+                      switchCheck();
+                    },
+                  ),
+                  Text("곱셈"),
+                  Switch(
+                    value: mulSwitch, 
+                    onChanged: (value) {
+                      mulSwitch = value;
+                      switchCheck();
+                    },
+                  ),
+                  Text("나눗셈"),
+                  Switch(
+                    value: divSwitch, 
+                    onChanged: (value) {
+                      divSwitch = value;
+                      switchCheck();
+                    },
+                  ),
+                ],
+              ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 50, 0, 20),
                 child: TextField(
+                  textAlign: TextAlign.end,
                   controller: sumresult,
                   decoration: InputDecoration(
                     labelText: '덧셈 결과',
                   ),
+                  readOnly: true,
                 ),
               ),
               TextField(
+                textAlign: TextAlign.end,
                 controller: removeresult,
                 decoration: InputDecoration(
                   labelText: '뺄셈 결과',
                 ),
+                readOnly: true,
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                 child: TextField(
+                  textAlign: TextAlign.end,
                   controller: multiresult,
                   decoration: InputDecoration(
                     labelText: '곱셈 결과',
                   ),
+                  readOnly: true,
                 ),
               ),
+              SizedBox(                   // sizedBox : 사이 빈 공간 생성.
+                height: 20, 
+              ),
               TextField(
+                textAlign: TextAlign.end,
                 controller: divisionresult,
                 decoration: InputDecoration(
                   labelText: '나눗셈 결과',
                 ),
+                readOnly: true,
               )
             ],
           ),
@@ -128,12 +198,12 @@ class _HomeState extends State<Home> {
   // ---- Functions ----
 
   // snackBar Function
-  void _snackBar(String message, Color color){    // 함수 하나로 합치기
+  void _snackBar(){    // 함수 하나로 합치기
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(message),
+        content: Text("숫자를 입력하세요"),
         duration: Duration(seconds: 2),
-        backgroundColor: color,
+        backgroundColor: Colors.red,
       )
     );
   }
@@ -141,28 +211,31 @@ class _HomeState extends State<Home> {
   // 계산 function
   void calcAction (){
     if(num1Controller.text.trim().isNotEmpty && num2Controller.text.trim().isNotEmpty){
+      calcResult();
+    } else {
+      _snackBar();
+    }
+  }
+
+  void calcResult() {
     int num1 = int.parse(num1Controller.text.trim());
     int num2 = int.parse(num2Controller.text.trim());
+
     int sum = num1 + num2;
-    int remove = num1 - num2;
-    int multi = num1 * num2;
+    int sub = num1 - num2;
+    int mul = num1 * num2;
 
-    sumresult.text = sum.toString();
-    removeresult.text = remove.toString();
-    multiresult.text = multi.toString();
+    addSwitchReserve = sum.toString();
+    subSwitchReserve = sub.toString();
+    mulSwitchReserve = mul.toString();
 
-    if (num2 == 0) {
-        divisionresult.text = "";
-        _snackBar("0으로 나눌 수 없습니다.", Colors.red);
+      if (num2 == 0) {
+        divSwitchReserve = "Impossible";
       } else {
         double division = num1 / num2;
-        divisionresult.text = division.toString();
+        divSwitchReserve = division.toString();
       }
-
-    setState(() {});
-    }else{
-      _snackBar("숫자를 입력하세요", Colors.red);
-    }
+    switchCheck();
   }
 
   // 지우기 function
@@ -170,11 +243,27 @@ class _HomeState extends State<Home> {
     num1Controller.text = ""; // num1Controller.clear(); 와 같은 방법
     num2Controller.text = "";
     sumresult.text = "";
-    removeresult.text = "";
+    removeresult.clear();
     multiresult.text = "";
     divisionresult.text = "";
 
+    addSwitchReserve = "";
+    subSwitchReserve = "";
+    mulSwitchReserve = "";
+    divSwitchReserve = "";
+
     setState(() {});
   }
+
+  void switchCheck(){
+    sumresult.text = addSwitch ? addSwitchReserve : "";
+    removeresult.text = subSwitch ? subSwitchReserve : "";
+    multiresult.text = mulSwitch ? mulSwitchReserve : "";
+    divisionresult.text = divSwitch ? divSwitchReserve : "";
+    setState(() {
+      
+    });
+  }
+  
 
 } // class
