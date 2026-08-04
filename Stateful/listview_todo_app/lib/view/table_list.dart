@@ -26,6 +26,8 @@ class _TableListState extends State<TableList> {
     todoList.add(TodoList(imagePath: "images/pencil.png", workList: "스터디 준비하기"));
   }
 
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,29 +44,45 @@ class _TableListState extends State<TableList> {
         child: ListView.builder(
           itemCount: todoList.length,
           itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {
-                Message.workList = todoList[index].workList;
-                Message.imagePath = todoList[index].imagePath;
-                Navigator.pushNamed(context, 
-                "/detail",
-                );
+            return Dismissible(
+              direction: DismissDirection.endToStart,
+              key: ValueKey(todoList[index]),
+              onDismissed: (direction) {
+                todoList.remove(todoList[index]);
+                setState(() {});
               },
-              child: SizedBox(
-                height: 100,
-                child: Card(
-                  color: index % 2 == 0
-                  ? const Color.fromARGB(255, 145, 249, 148) 
-                  : const Color.fromARGB(255, 240, 124, 116),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        todoList[index].imagePath,
-                      ),
-                      Text(
-                        "               ${todoList[index].workList}"
-                      )
-                    ],
+              background: Container(
+                color: Colors.red,
+                alignment: Alignment.centerRight,
+                child: Icon(
+                  Icons.delete_forever,
+                  size: 30,
+                ),
+              ),
+              child: GestureDetector(
+                onTap: () {
+                  Message.workList = todoList[index].workList;
+                  Message.imagePath = todoList[index].imagePath;
+                  Navigator.pushNamed(context, 
+                  "/detail",
+                  );
+                },
+                child: SizedBox(
+                  height: 100,
+                  child: Card(
+                    color: index % 2 == 0
+                    ? const Color.fromARGB(255, 145, 249, 148) 
+                    : const Color.fromARGB(255, 240, 124, 116),
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          todoList[index].imagePath,
+                        ),
+                        Text(
+                          "               ${todoList[index].workList}"
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
