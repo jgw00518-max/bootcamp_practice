@@ -203,11 +203,11 @@ class _InsertListState extends State<InsertList> {
     Message.action = true;
   }
 
-  void switchNoneCheck(){
-    if(buySwitch == false && promiseSwitch == false && studySwitch == false){
-      buySwitch = true;
-      Message.imagePath = 'images/cart.png';
-    }
-    setState(() {});
-  }
+  // void switchNoneCheck(){
+  //   if(buySwitch == false && promiseSwitch == false && studySwitch == false){
+  //     buySwitch = true;
+  //     Message.imagePath = 'images/cart.png';
+  //   }
+  //   setState(() {});
+  // }
 } // class
