@@ -21,6 +21,19 @@ class _SecondPageState extends State<SecondPage> {
   late String _imagePath;
   late List<Color> animalColor;
 
+  // [수정] 선택 가능한 고정 이미지 경로 리스트 추가
+  final List<String> defaultImages = [
+    "images/bee.png",
+    "images/cat.png",
+    "images/cow.png",
+    "images/dog.png",
+    "images/fox.png",
+    "images/monkey.png",
+    "images/pig.png",
+    "images/wolf.png",
+  ];
+  
+
   @override
   void initState() {
     super.initState();
@@ -30,10 +43,11 @@ class _SecondPageState extends State<SecondPage> {
     _imagePath = "";
     animalColor = [];
 
-    for(int i = 0; i < widget.list.length; i++){
+    // [수정] widget.list 대신 defaultImages 길이에 맞추어 테두리 색상 초기화
+    for(int i = 0; i < defaultImages.length; i++){
       animalColor.add(Colors.yellow);
+    }
   }
-}
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +100,8 @@ class _SecondPageState extends State<SecondPage> {
               height: 100,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 8,
+                // [수정] itemCount를 고정 이미지 리스트의 길이로 설정
+                itemCount: defaultImages.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () => rebuildBorder(index),
@@ -100,7 +115,8 @@ class _SecondPageState extends State<SecondPage> {
                         )
                       ),
                       child: Image.asset(
-                        widget.list[index].imagePath,
+                        // [수정] widget.list[index].imagePath 대신 defaultImages[index] 사용
+                        defaultImages[index],
                       ),
                     ),
                   );
@@ -119,12 +135,14 @@ class _SecondPageState extends State<SecondPage> {
 
   // --- Functions ---
   void rebuildBorder(int index){
-    for(int i = 0; i < widget.list.length; i++){
+    // [수정] defaultImages 길이에 맞춰 테두리 색상 초기화
+    for(int i = 0; i < defaultImages.length; i++){
       animalColor[i] = Colors.yellow;
     }
 
     animalColor[index] = Colors.red;
-    _imagePath = widget.list[index].imagePath;
+    // [수정] 선택한 고정 이미지의 경로를 저장
+    _imagePath = defaultImages[index];
     
     setState(() {});
   }
@@ -153,7 +171,7 @@ class _SecondPageState extends State<SecondPage> {
             TextButton(
               onPressed: () {
                 widget.list.add(animal);
-                animalColor.add(Colors.yellow);
+                // [수정] 동물이 추가되더라도 선택 가능한 이미지 테두리 리스트(animalColor)에는 영향을 주지 않도록 삭제했습니다.
 
                 // 초기화
                 nameController.text = "";
@@ -195,6 +213,4 @@ class _SecondPageState extends State<SecondPage> {
     return kind;
   }
 
-
-  
 } // class

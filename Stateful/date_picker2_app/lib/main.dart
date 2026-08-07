@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+
       localizationsDelegates: [
         GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: [
         Locale('ko', 'KR'),
-        Locale('en', 'US')
+        // Locale('en', 'US')
       ],
 
       theme: ThemeData(

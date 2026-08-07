@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -12,7 +13,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   // Property
   String currentDateTime = "";
-  late DateTime chosenDateTime;
+  DateTime? chosenDateTime;
   final bool _isRunning = true;
 
   @override
@@ -35,6 +36,7 @@ class _HomeState extends State<Home> {
 ;
     setState(() {});
   }
+
 
   String _weekDayToString(int weekday){
     String dateName = "";
@@ -73,10 +75,39 @@ class _HomeState extends State<Home> {
                 fontSize: 18,
                 fontWeight: FontWeight.bold
               ),
+            ),
+            SizedBox(
+              width: 300,
+              height: 200,
+              child: CupertinoDatePicker(
+                initialDateTime: DateTime.now(),
+                use24hFormat: true,
+                onDateTimeChanged: (value) {
+                  chosenDateTime = value;
+                  setState(() {});
+                },
+              ),
+            ),
+            Text(
+              "선택시간 : ${chosenDateTime != null ? _chosenTime(chosenDateTime!) : "시간을 선택하세요"}"
             )
           ],
         ),
       ),
     );
+  } // build
+
+  // --- Functions ---
+  String _chosenTime(DateTime now1){
+    String chosenDateTime1 = "${now1.year}-${now1.month.toString().padLeft(2, '0')}-"
+                      "${now1.day.toString().padLeft(2, '0')} ${_weekDayToString(now1.weekday)} "
+                      "${now1.hour.toString().padLeft(2, '0')}:${now1.minute.toString().padLeft(2, '0')}:"
+                      "${now1.second.toString().padLeft(2, '0')}"
+  ;
+    return chosenDateTime1;
   }
-}
+
+
+
+  
+} // class
