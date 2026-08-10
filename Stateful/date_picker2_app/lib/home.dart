@@ -16,6 +16,7 @@ class _HomeState extends State<Home> {
   DateTime? chosenDateTime;
   final bool _isRunning = true;
 
+
   @override
   void initState() {
     super.initState();
@@ -25,6 +26,7 @@ class _HomeState extends State<Home> {
       }
       _addItem();
     },);
+    
   }
 
   void _addItem(){
@@ -34,9 +36,9 @@ class _HomeState extends State<Home> {
                       "${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}:"
                       "${now.second.toString().padLeft(2, '0')}"
 ;
+
     setState(() {});
   }
-
 
   String _weekDayToString(int weekday){
     String dateName = "";
