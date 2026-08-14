@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_intro_app/second_page.dart';
@@ -117,15 +118,96 @@ class _HomeState extends State<Home> {
   }
 
   void buttonDialog(){
+    final TextEditingController textController = TextEditingController();
+    DateTime selectedTime = DateTime.now();
+
     Get.defaultDialog(
-      title: "Dialog",
-      middleText: "Message",
+      title: "할 일 추가",
       backgroundColor: Colors.amberAccent,
       barrierDismissible: false,
+      content: StatefulBuilder(
+        builder: (context, setDialogState) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextField(
+                  controller: textController,
+                  decoration: const InputDecoration(
+                    hintText: "할 일을 입력하세요",
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "시간: ${selectedTime.hour.toString().padLeft(2, '0')}:${selectedTime.minute.toString().padLeft(2, '0')}",
+                      style: const TextStyle(fontSize: 14),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        showCupertinoModalPopup(
+                          context: context,
+                          builder: (context) => Container(
+                            height: 250,
+                            color: Colors.white,
+                            child: Column(
+                              children: [
+                                Container(
+                                  color: Colors.grey[200],
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      CupertinoButton(
+                                        child: const Text("완료"),
+                                        onPressed: () => Navigator.pop(context),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Expanded(
+                                  child: CupertinoDatePicker(
+                                    mode: CupertinoDatePickerMode.time,
+                                    initialDateTime: selectedTime,
+                                    onDateTimeChanged: (DateTime newTime) {
+                                      setDialogState(() {
+                                        selectedTime = newTime;
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                      child: const Text("시간 선택"),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
+      ),
       actions: [
         TextButton(
+          onPressed: () {
+            // 입력값 확인 테스트용
+            print("입력한 메모: ${textController.text}");
+            print("선택한 시간: ${selectedTime.hour}:${selectedTime.minute}");
+            Get.back();
+          }, 
+          child: const Text("확인"),
+        ),
+        TextButton(
           onPressed: () => Get.back(), 
-          child: Text("Exit"),
+          child: const Text("Exit"),
         ),
       ]
     );
@@ -152,5 +234,4 @@ class _HomeState extends State<Home> {
     );
   }
 
-  
 } // class
