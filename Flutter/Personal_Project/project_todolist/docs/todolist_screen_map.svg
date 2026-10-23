@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 2048 2048">
+  <defs>
+    <style>
+      .bg{fill:#f5f7fb}.panel{fill:#fff;stroke:#dbe1ec;stroke-width:3}.screen{fill:#fff;stroke:#6570f6;stroke-width:4}.soft{fill:#f1f2ff}.title{font:700 38px 'Malgun Gothic',sans-serif;fill:#151a2d}.h{font:700 27px 'Malgun Gothic',sans-serif;fill:#151a2d}.t{font:21px 'Malgun Gothic',sans-serif;fill:#3f4861}.fn{font:19px Consolas,'Malgun Gothic',monospace;fill:#565ee8}.small{font:18px 'Malgun Gothic',sans-serif;fill:#6f7890}.nav{fill:#6570f6}.line{stroke:#99a3b8;stroke-width:4;fill:none;marker-end:url(#arrow)}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#99a3b8"/></marker>
+  </defs>
+  <rect width="2048" height="2048" class="bg"/>
+  <text x="80" y="80" class="title">TODOLIST 화면 · 기능 구성도</text>
+  <text x="80" y="118" class="small">프로젝트: C:\My\Flutter\project_todolist  |  GetX + SQLite(sqflite)</text>
+
+  <!-- Main app shell -->
+  <rect x="80" y="155" rx="28" ry="28" width="1888" height="185" class="panel"/>
+  <text x="115" y="205" class="h">Home — 공통 앱 프레임</text>
+  <rect x="115" y="228" rx="18" width="1250" height="78" class="soft"/>
+  <text x="140" y="260" class="t">하단 NavigationBar: 목록 · 캘린더 · 루틴 · 집중 · 통계</text>
+  <text x="140" y="290" class="fn">onDestinationSelected → controller.selectedTab.value = index</text>
+  <rect x="1395" y="228" rx="18" width="535" height="78" class="soft"/>
+  <text x="1420" y="260" class="t">＋ 버튼: 할 일/루틴 등록 화면</text>
+  <text x="1420" y="290" class="fn">Get.to(() → TaskFormPage(...))</text>
+
+  <!-- Screens row 1 -->
+  <rect x="80" y="390" rx="26" width="590" height="570" class="screen"/>
+  <text x="115" y="440" class="h">1. 목록 화면</text>
+  <text x="115" y="478" class="small">TodoListPage · 좌측 첫 번째 탭</text>
+  <rect x="115" y="505" rx="16" width="520" height="84" class="soft"/>
+  <text x="135" y="538" class="t">상단: 알림 / 휴지통</text>
+  <text x="135" y="569" class="fn">Get.to(() → TrashPage())</text>
+  <rect x="115" y="605" rx="16" width="520" height="102" class="soft"/>
+  <text x="135" y="637" class="t">검색창 + 상세 필터 버튼</text>
+  <text x="135" y="668" class="fn">searchQuery.value = value</text>
+  <text x="135" y="696" class="fn">_showDetailedFilters(context)</text>
+  <rect x="115" y="723" rx="16" width="520" height="102" class="soft"/>
+  <text x="135" y="755" class="t">상태 칩: 전체 / 오늘 / 완료 / 미완료</text>
+  <text x="135" y="786" class="fn">statusFilter.value = value</text>
+  <text x="135" y="814" class="fn">clearFilters()</text>
+  <rect x="115" y="841" rx="16" width="520" height="86" class="soft"/>
+  <text x="135" y="873" class="t">할 일 카드: 완료 / 수정 / 삭제</text>
+  <text x="135" y="904" class="fn">toggle() · openTodoEditor() · deleteTodoWithScope()</text>
+
+  <rect x="729" y="390" rx="26" width="590" height="570" class="screen"/>
+  <text x="764" y="440" class="h">2. 캘린더 화면</text>
+  <text x="764" y="478" class="small">CalendarPage · 하단 두 번째 탭</text>
+  <rect x="764" y="505" rx="16" width="520" height="100" class="soft"/>
+  <text x="784" y="537" class="t">상단: 주 / 월 보기 전환</text>
+  <text x="784" y="568" class="t">달력 날짜 선택 → 해당 날짜 일정 표시</text>
+  <text x="784" y="596" class="fn">selectedDay.value 변경</text>
+  <rect x="764" y="621" rx="16" width="520" height="100" class="soft"/>
+  <text x="784" y="653" class="t">날짜별 이벤트 점 + 일정 목록</text>
+  <text x="784" y="684" class="fn">todosForDay(day)</text>
+  <text x="784" y="712" class="fn">openTodoEditor(context, todo)</text>
+  <rect x="764" y="737" rx="16" width="520" height="120" class="soft"/>
+  <text x="784" y="769" class="t">＋ 버튼: 선택한 날짜로 할 일 추가</text>
+  <text x="784" y="800" class="fn">TaskFormPage(initialDate: selectedDay)</text>
+  <text x="784" y="836" class="small">결과: 저장 후 캘린더 및 목록 갱신</text>
+
+  <rect x="1378" y="390" rx="26" width="590" height="570" class="screen"/>
+  <text x="1413" y="440" class="h">3. 루틴 화면</text>
+  <text x="1413" y="478" class="small">RoutinePage · 하단 세 번째 탭</text>
+  <rect x="1413" y="505" rx="16" width="520" height="100" class="soft"/>
+  <text x="1433" y="537" class="t">상단: 전체 / 활성 / 중지 요약</text>
+  <text x="1433" y="568" class="t">루틴 카드: 반복 요일·시간·완료 현황</text>
+  <rect x="1413" y="621" rx="16" width="520" height="118" class="soft"/>
+  <text x="1433" y="653" class="t">카드 탭 → 루틴 수정 화면</text>
+  <text x="1433" y="684" class="fn">Get.to(() → RoutineFormPage(routine))</text>
+  <text x="1433" y="723" class="fn">toggleRoutine(routine)</text>
+  <rect x="1413" y="755" rx="16" width="520" height="120" class="soft"/>
+  <text x="1433" y="787" class="t">삭제 버튼 → 확인 후 루틴 삭제</text>
+  <text x="1433" y="818" class="fn">_confirmDelete() → deleteRoutine(id)</text>
+  <text x="1433" y="857" class="fn">＋ → TaskFormPage(initialRepeat: true)</text>
+
+  <!-- Screens row 2 -->
+  <rect x="80" y="1015" rx="26" width="590" height="475" class="screen"/>
+  <text x="115" y="1065" class="h">4. 할 일 등록·수정</text>
+  <text x="115" y="1103" class="small">TaskFormPage · ＋ 버튼 또는 카드 탭</text>
+  <rect x="115" y="1130" rx="16" width="520" height="154" class="soft"/>
+  <text x="135" y="1162" class="t">제목 · 메모 · 날짜 · 시간 · 우선순위</text>
+  <text x="135" y="1193" class="t">카테고리 · 반복 · 반복 종료일</text>
+  <text x="135" y="1228" class="fn">_pickDate() · _pickTime()</text>
+  <text x="135" y="1259" class="fn">_showRepeatOptions() · _pickRepeatEndDate()</text>
+  <rect x="115" y="1300" rx="16" width="520" height="138" class="soft"/>
+  <text x="135" y="1332" class="t">저장 버튼 → 신규 등록 또는 수정</text>
+  <text x="135" y="1363" class="fn">_save() → addTodo() / updateTodo()</text>
+  <text x="135" y="1400" class="t">뒤로가기: 변경 시 폐기 확인</text>
+  <text x="135" y="1428" class="fn">_handlePop()</text>
+
+  <rect x="729" y="1015" rx="26" width="590" height="475" class="screen"/>
+  <text x="764" y="1065" class="h">5. 집중 화면</text>
+  <text x="764" y="1103" class="small">FocusPage · 하단 네 번째 탭</text>
+  <rect x="764" y="1130" rx="16" width="520" height="134" class="soft"/>
+  <text x="784" y="1162" class="t">중앙: 집중 타이머 + 현재 할 일</text>
+  <text x="784" y="1193" class="t">재생/일시정지 버튼</text>
+  <text x="784" y="1220" class="fn">_toggleTimer()</text>
+  <text x="784" y="1248" class="fn">→ startFocus() / pauseFocus() / resumeFocus()</text>
+  <rect x="764" y="1280" rx="16" width="520" height="158" class="soft"/>
+  <text x="784" y="1312" class="t">완료 버튼 → 세션 저장</text>
+  <text x="784" y="1343" class="fn">_complete() → completeFocus()</text>
+  <text x="784" y="1379" class="t">시간 직접 설정</text>
+  <text x="784" y="1410" class="fn">_showCustomDuration()</text>
+
+  <rect x="1378" y="1015" rx="26" width="590" height="475" class="screen"/>
+  <text x="1413" y="1065" class="h">6. 통계 화면</text>
+  <text x="1413" y="1103" class="small">StatisticsPage · 하단 다섯 번째 탭</text>
+  <rect x="1413" y="1130" rx="16" width="520" height="184" class="soft"/>
+  <text x="1433" y="1162" class="t">전체·완료·예정·미완료 지표</text>
+  <text x="1433" y="1193" class="t">주간 완료율 · 카테고리별 현황</text>
+  <text x="1433" y="1224" class="t">집중 시간 · 주간 리뷰</text>
+  <text x="1433" y="1262" class="fn">completedCount · completionRate</text>
+  <text x="1433" y="1293" class="fn">weeklyFocusSeconds</text>
+  <rect x="1413" y="1330" rx="16" width="520" height="108" class="soft"/>
+  <text x="1433" y="1362" class="t">데이터 내보내기 버튼</text>
+  <text x="1433" y="1393" class="fn">현재: Get.snackbar('준비 중', ...)</text>
+  <text x="1433" y="1422" class="small">CSV · JSON 연결 예정</text>
+
+  <!-- Data flow -->
+  <path d="M1024 1490 L1024 1550" class="line"/>
+  <rect x="190" y="1560" rx="26" width="760" height="380" class="panel"/>
+  <text x="230" y="1610" class="h">TodoController — 화면 상태·기능</text>
+  <text x="230" y="1655" class="t">목록/필터: loadTodos() · clearFilters() · toggle()</text>
+  <text x="230" y="1695" class="t">할 일: addTodo() · updateTodo() · moveToTrash()</text>
+  <text x="230" y="1735" class="t">휴지통: restoreTodo() · permanentlyDeleteTodo()</text>
+  <text x="230" y="1775" class="t">루틴: addRoutine() · updateRoutine() · toggleRoutine()</text>
+  <text x="230" y="1815" class="t">집중: startFocus() · pauseFocus() · completeFocus()</text>
+  <text x="230" y="1855" class="small">Obx가 값 변경을 감지해 각 화면을 다시 그립니다.</text>
+  <path d="M950 1750 L1090 1750" class="line"/>
+  <rect x="1098" y="1560" rx="26" width="760" height="380" class="panel"/>
+  <text x="1138" y="1610" class="h">TodoDatabase — SQLite 저장소</text>
+  <text x="1138" y="1655" class="t">todos: 할 일 현재 상태</text>
+  <text x="1138" y="1695" class="t">deleted_todos: 휴지통 및 복구 데이터</text>
+  <text x="1138" y="1735" class="t">work_sessions: 집중 시간 기록</text>
+  <text x="1138" y="1775" class="t">routines: 반복 조건 및 활성 상태</text>
+  <text x="1138" y="1825" class="fn">read / insert / update / delete</text>
+  <text x="1138" y="1865" class="fn">createRoutineTodosFor(date)</text>
+  <text x="1138" y="1905" class="small">sqflite를 통해 앱 종료 후에도 데이터를 유지합니다.</text>
+  <text x="80" y="2010" class="small">※ 알림 버튼과 데이터 내보내기는 현재 UI만 존재하거나 준비 중 상태입니다.</text>
+</svg>

@@ -139,3 +139,28 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,dart,flutter,visualstudiocode
+# Excluded projects
+/ondolbom/
+/shoepick/
+/shupick_project/
+
+# Python and local secrets
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.idea/
+*.iml
+.ipynb_checkpoints/
+.env*
+*.pem
+*.key
+**/serviceAccount*.json
+**/*firebase-adminsdk*.json
+
+
+build_stale/
+.gradle/
+.cxx/
+

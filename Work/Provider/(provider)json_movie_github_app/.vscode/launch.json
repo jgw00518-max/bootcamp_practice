@@ -1,0 +1,12 @@
+﻿{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Flutter",
+      "request": "launch",
+      "type": "dart",
+      "cwd": "C:\\My\\Work\\Provider\\provider_movie_github_app",
+      "program": "C:\\My\\Work\\Provider\\provider_movie_github_app\\lib\\main.dart"
+    }
+  ]
+}

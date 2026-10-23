@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<defs><style>
+.bg{fill:#fafbfc}.title{font:700 42px 'Malgun Gothic',sans-serif;fill:#171a25}.sub{font:19px 'Malgun Gothic',sans-serif;fill:#70798c}.card{fill:#fff;stroke:#d9dcef;stroke-width:2}.head{fill:#f0f1ff}.screen{font:700 23px 'Malgun Gothic',sans-serif;fill:#292e3b}.fn{font:700 16px Consolas,'Malgun Gothic',monospace;fill:#555dd6}.desc{font:14px 'Malgun Gothic',sans-serif;fill:#70798c}.line{stroke:#edf0f6;stroke-width:1}.pill{fill:#edf9f3}.pilltext{font:700 12px 'Malgun Gothic',sans-serif;fill:#27865a}
+</style></defs>
+<rect width="1920" height="1080" class="bg"/>
+<text x="60" y="62" class="title">TODOLIST 주요 함수 · Getter 목록</text>
+<text x="60" y="95" class="sub">실제 프로젝트의 함수명을 화면별로 분류 · Getter는 초록색으로 별도 표시</text>
+
+<!-- 목록 -->
+<g transform="translate(60,130)"><rect width="405" height="345" rx="22" class="card"/><path d="M22 0H383Q405 0 405 22V58H0V22Q0 0 22 0" class="head"/><text x="22" y="38" class="screen">01. 목록 화면</text>
+<text x="22" y="88" class="fn">_showDetailedFilters()</text><text x="22" y="110" class="desc">상태·카테고리·우선순위 필터 표시</text><line x1="22" y1="124" x2="383" y2="124" class="line"/>
+<text x="22" y="153" class="fn">toggle()</text><text x="22" y="175" class="desc">할 일의 완료 상태 변경</text><line x1="22" y1="189" x2="383" y2="189" class="line"/>
+<text x="22" y="218" class="fn">openTodoEditor()</text><text x="22" y="240" class="desc">저장된 값으로 수정 화면 열기</text><line x1="22" y1="254" x2="383" y2="254" class="line"/>
+<text x="22" y="283" class="fn">deleteTodoWithScope()</text><text x="22" y="305" class="desc">삭제 대상과 반복 적용 범위 확인</text></g>
+
+<!-- 휴지통 -->
+<g transform="translate(60,500)"><rect width="405" height="345" rx="22" class="card"/><path d="M22 0H383Q405 0 405 22V58H0V22Q0 0 22 0" class="head"/><text x="22" y="38" class="screen">03. 휴지통 화면</text>
+<text x="22" y="88" class="fn">_restore()</text><text x="22" y="110" class="desc">선택한 할 일의 복구 처리 시작</text><line x1="22" y1="124" x2="383" y2="124" class="line"/>
+<text x="22" y="153" class="fn">restoreTodo(id)</text><text x="22" y="175" class="desc">삭제 데이터를 일반 목록으로 복원</text><line x1="22" y1="189" x2="383" y2="189" class="line"/>
+<text x="22" y="218" class="fn">_confirmPermanentDelete()</text><text x="22" y="240" class="desc">영구 삭제 확인 창 표시</text><line x1="22" y1="254" x2="383" y2="254" class="line"/>
+<text x="22" y="283" class="fn">permanentlyDeleteTodo(id)</text><text x="22" y="305" class="desc">선택한 데이터를 완전히 삭제</text></g>
+
+<!-- 입력 -->
+<g transform="translate(505,130)"><rect width="405" height="555" rx="22" class="card"/><path d="M22 0H383Q405 0 405 22V58H0V22Q0 0 22 0" class="head"/><text x="22" y="38" class="screen">02. 새 할 일 / 수정 화면</text>
+<text x="22" y="88" class="fn">_save()</text><text x="22" y="108" class="desc">입력값 검증 후 할 일 또는 루틴 저장</text><line x1="22" y1="119" x2="383" y2="119" class="line"/>
+<text x="22" y="143" class="fn">_validateTitle()</text><text x="22" y="163" class="desc">필수 제목과 입력 조건 검증</text><line x1="22" y1="174" x2="383" y2="174" class="line"/>
+<text x="22" y="198" class="fn">_pickDate()</text><text x="22" y="218" class="desc">마감 날짜 선택 창 표시</text><line x1="22" y1="229" x2="383" y2="229" class="line"/>
+<text x="22" y="253" class="fn">_pickTime()</text><text x="22" y="273" class="desc">마감 시간 선택 창 표시</text><line x1="22" y1="284" x2="383" y2="284" class="line"/>
+<text x="22" y="308" class="fn">_showRepeatOptions()</text><text x="22" y="328" class="desc">반복 주기와 종료 조건 설정</text><line x1="22" y1="339" x2="383" y2="339" class="line"/>
+<text x="22" y="363" class="fn">addTodo() / updateTodo()</text><text x="22" y="383" class="desc">일반 할 일을 등록하거나 수정</text><line x1="22" y1="394" x2="383" y2="394" class="line"/>
+<text x="22" y="418" class="fn">addRoutine() / updateRoutine()</text><text x="22" y="438" class="desc">반복 루틴을 등록하거나 수정</text></g>
+
+<!-- 루틴 -->
+<g transform="translate(505,710)"><rect width="405" height="215" rx="22" class="card"/><path d="M22 0H383Q405 0 405 22V58H0V22Q0 0 22 0" class="head"/><text x="22" y="38" class="screen">05. 루틴 화면</text>
+<text x="22" y="98" class="fn">toggleRoutine()</text><text x="22" y="120" class="desc">루틴의 활성·비활성 상태 변경</text><line x1="22" y1="139" x2="383" y2="139" class="line"/>
+<text x="22" y="169" class="fn">_confirmDelete()</text><text x="22" y="191" class="desc">루틴 삭제 여부 확인</text></g>
+
+<!-- 캘린더 -->
+<g transform="translate(950,130)"><rect width="405" height="345" rx="22" class="card"/><path d="M22 0H383Q405 0 405 22V58H0V22Q0 0 22 0" class="head"/><text x="22" y="38" class="screen">04. 캘린더 화면</text>
+<text x="22" y="88" class="fn">_showFilters()</text><text x="22" y="110" class="desc">검색 조건과 캘린더 필터 표시</text><line x1="22" y1="124" x2="383" y2="124" class="line"/>
+<text x="22" y="153" class="fn">calendarTodosFor()</text><text x="22" y="175" class="desc">날짜와 조건에 맞는 일정 조회</text><line x1="22" y1="189" x2="383" y2="189" class="line"/>
+<text x="22" y="218" class="fn">toggle()</text><text x="22" y="240" class="desc">선택 일정의 완료 상태 변경</text><line x1="22" y1="254" x2="383" y2="254" class="line"/>
+<text x="22" y="283" class="fn">openTodoEditor()</text><text x="22" y="305" class="desc">선택 일정을 수정 화면으로 전달</text></g>
+
+<!-- 집중 -->
+<g transform="translate(950,500)"><rect width="405" height="500" rx="22" class="card"/><path d="M22 0H383Q405 0 405 22V58H0V22Q0 0 22 0" class="head"/><text x="22" y="38" class="screen">06. 집중 화면</text>
+<text x="22" y="84" class="fn">focusSecondsForTodo()</text><text x="22" y="103" class="desc">할 일별 누적 집중 시간 계산</text><line x1="22" y1="113" x2="383" y2="113" class="line"/>
+<text x="22" y="137" class="fn">remainingEstimatedSecondsFor()</text><text x="22" y="156" class="desc">예상 시간에서 남은 시간 계산</text><line x1="22" y1="166" x2="383" y2="166" class="line"/>
+<text x="22" y="190" class="fn">_tick()</text><text x="22" y="209" class="desc">진행 중인 타이머 값 갱신</text><line x1="22" y1="219" x2="383" y2="219" class="line"/>
+<text x="22" y="243" class="fn">_syncTicker()</text><text x="22" y="262" class="desc">세션과 타이머 상태 동기화</text><line x1="22" y1="272" x2="383" y2="272" class="line"/>
+<text x="22" y="296" class="fn">_toggleTimer()</text><text x="22" y="315" class="desc">타이머 시작·일시정지·재개</text><line x1="22" y1="325" x2="383" y2="325" class="line"/>
+<text x="22" y="349" class="fn">_complete()</text><text x="22" y="368" class="desc">현재 집중 세션의 완료 처리 시작</text><line x1="22" y1="378" x2="383" y2="378" class="line"/>
+<text x="22" y="402" class="fn">_finishAndPrompt()</text><text x="22" y="421" class="desc">집중 기록 저장 후 다음 행동 안내</text></g>
+
+<!-- 통계 -->
+<g transform="translate(1395,130)"><rect width="465" height="680" rx="22" class="card"/><path d="M22 0H443Q465 0 465 22V58H0V22Q0 0 22 0" class="head"/><text x="22" y="38" class="screen">07. 통계 화면</text>
+<text x="22" y="88" class="fn">weeklyCreatedCountsFor()</text><text x="22" y="110" class="desc">주간 할 일 생성 건수 집계</text><line x1="22" y1="124" x2="443" y2="124" class="line"/>
+<text x="22" y="153" class="fn">weeklyCompletedCountsFor()</text><text x="22" y="175" class="desc">주간 완료 건수 집계</text><line x1="22" y1="189" x2="443" y2="189" class="line"/>
+<rect x="365" y="207" width="70" height="24" rx="12" class="pill"/><text x="382" y="224" class="pilltext">GETTER</text><text x="22" y="218" class="fn">categoryCompletionStats</text><text x="22" y="240" class="desc">카테고리별 완료율 계산</text><line x1="22" y1="254" x2="443" y2="254" class="line"/>
+<rect x="365" y="272" width="70" height="24" rx="12" class="pill"/><text x="382" y="289" class="pilltext">GETTER</text><text x="22" y="283" class="fn">priorityCompletionStats</text><text x="22" y="305" class="desc">우선순위별 완료율 계산</text><line x1="22" y1="319" x2="443" y2="319" class="line"/>
+<rect x="365" y="337" width="70" height="24" rx="12" class="pill"/><text x="382" y="354" class="pilltext">GETTER</text><text x="22" y="348" class="fn">completedOnTimeCount</text><text x="22" y="370" class="desc">기한 내 완료 건수 계산</text><line x1="22" y1="384" x2="443" y2="384" class="line"/>
+<rect x="365" y="402" width="70" height="24" rx="12" class="pill"/><text x="382" y="419" class="pilltext">GETTER</text><text x="22" y="413" class="fn">delayedCount</text><text x="22" y="435" class="desc">기한이 지난 할 일 건수 계산</text><line x1="22" y1="449" x2="443" y2="449" class="line"/>
+<text x="22" y="478" class="fn">weeklyFocusSecondsFor()</text><text x="22" y="500" class="desc">주간 실제 집중 시간 집계</text></g>
+
+<rect x="1395" y="835" width="465" height="90" rx="18" class="card"/><text x="1418" y="870" class="screen">표기 기준</text><text x="1418" y="900" class="desc">함수: 이름 뒤에 () 표시 · Getter: 괄호 없이 초록색 배지 표시</text>
+</svg>

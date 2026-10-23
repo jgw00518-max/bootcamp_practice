@@ -1,0 +1,29 @@
+# Python cache and virtual environments
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# Jupyter and editor metadata
+.ipynb_checkpoints/
+.idea/
+*.iml
+
+# Local Anaconda project metadata
+anaconda_projects/
+
+# Flutter and Dart generated files
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+coverage/
+
+# Android/Gradle generated files
+.gradle/
+android/.gradle/
+android/app/build/
