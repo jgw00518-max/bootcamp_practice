@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3600" height="2400" viewBox="0 0 3600 2400">
+<defs><style>
+.bg{fill:#fafbfc}.grid{stroke:#eef0f3;stroke-width:1}.phone{fill:#fff;stroke:#252936;stroke-width:3}.asset{fill:#fff;stroke:#aeb5c2;stroke-width:2}.nav{fill:#f0f1ff;stroke:#626cf5;stroke-width:3}.action{fill:#edf9f3;stroke:#35a36d;stroke-width:3}.pending{fill:#edf9f3;stroke:#35a36d;stroke-width:3}.title{font:700 44px 'Malgun Gothic',sans-serif;fill:#171a25}.screen{font:700 30px 'Malgun Gothic',sans-serif;fill:#171a25}.name{font:700 24px 'Malgun Gothic',sans-serif;fill:#292e3b}.fn{font:17px Consolas,'Malgun Gothic',monospace;fill:#555dd6}.small{font:18px 'Malgun Gothic',sans-serif;fill:#70798c}.route{stroke:#626cf5;stroke-width:4;fill:none;marker-end:url(#p)}.line{stroke:#343842;stroke-width:3;fill:none;marker-end:url(#a)}.dash{stroke-dasharray:11 9}.tag{fill:#626cf5}.tagtext{font:700 17px 'Malgun Gothic',sans-serif;fill:#fff}
+</style><pattern id="grid" width="70" height="70" patternUnits="userSpaceOnUse"><path d="M70 0H0V70" fill="none" class="grid"/></pattern><marker id="p" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0L12 6L0 12z" fill="#626cf5"/></marker><marker id="a" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0L12 6L0 12z" fill="#343842"/></marker></defs>
+<rect width="3600" height="2400" class="bg"/><rect width="3600" height="2400" fill="url(#grid)"/>
+<text x="65" y="70" class="title">TODOLIST 화면 구성 계획서</text>
+<text x="65" y="108" class="small">화면 안 사각형은 에셋 배치 영역 · 함수명 뒤의 한글은 해당 함수와 연결의 역할 설명</text>
+
+<!-- LIST -->
+<g transform="translate(65,160)"><rect width="650" height="950" rx="30" class="phone"/><text x="28" y="50" class="screen">목록 화면</text>
+<rect x="435" y="20" width="185" height="70" class="asset"/><text x="493" y="48" class="name">휴지통</text><text x="447" y="76" class="fn">Get.to — 휴지통 이동</text>
+<rect x="470" y="105" width="150" height="85" class="asset"/><text x="483" y="140" class="name">completion</text><text x="520" y="168" class="name">rate</text>
+<text x="28" y="120" class="small">date · greeting</text>
+<rect x="28" y="215" width="592" height="82" class="asset"/><text x="220" y="250" class="name">검색 TextField</text><text x="120" y="279" class="fn">searchQuery — 검색 · _showDetailedFilters — 필터</text>
+<rect x="28" y="315" width="592" height="72" class="asset"/><text x="205" y="350" class="name">상태 FilterChip</text><text x="170" y="378" class="fn">statusFilter — 목록 조건 변경</text>
+<rect x="28" y="405" width="592" height="350" class="asset"/><text x="185" y="525" class="name">CustomScrollView</text><text x="178" y="555" class="small">SliverList + TodoCard</text><text x="150" y="595" class="fn">toggle — 완료 상태 변경</text><text x="150" y="628" class="fn">openTodoEditor — 수정 화면 열기</text><text x="150" y="661" class="fn">deleteTodoWithScope — 삭제 범위 확인</text>
+<rect x="505" y="700" width="115" height="90" class="action"/><text x="538" y="738" class="name">추가</text><text x="514" y="766" class="fn">등록 화면</text>
+<rect x="28" y="820" width="592" height="90" class="nav"/><text x="220" y="858" class="name">NavigationBar</text><text x="135" y="887" class="fn">selectedTab — 5개 메인 화면 전환</text>
+</g>
+
+<!-- TASK FORM -->
+<g transform="translate(1000,160)"><rect width="650" height="950" rx="30" class="phone"/><text x="28" y="50" class="screen">새 할 일 / 수정 화면</text>
+<rect x="28" y="75" width="592" height="70" class="asset"/><text x="205" y="108" class="name">AppBar + 저장</text><text x="190" y="136" class="fn">_save() — 입력 내용 저장</text>
+<rect x="28" y="165" width="592" height="75" class="asset"/><text x="210" y="198" class="name">제목 TextFormField</text><text x="175" y="228" class="fn">_validateTitle() — 제목 검증</text>
+<rect x="28" y="260" width="592" height="115" class="asset"/><text x="210" y="310" class="name">memo TextFormField</text>
+<rect x="28" y="395" width="285" height="72" class="asset"/><text x="125" y="428" class="name">날짜</text><text x="65" y="456" class="fn">_pickDate() — 날짜 선택</text><rect x="335" y="395" width="285" height="72" class="asset"/><text x="435" y="428" class="name">시간</text><text x="372" y="456" class="fn">_pickTime() — 시간 선택</text>
+<rect x="28" y="487" width="592" height="70" class="asset"/><text x="220" y="520" class="name">예상 시간</text><text x="180" y="548" class="fn">Dropdown — 소요 시간 선택</text>
+<rect x="28" y="577" width="592" height="70" class="asset"/><text x="225" y="610" class="name">priority</text><text x="205" y="638" class="fn">SegmentedButton&lt;int&gt;</text>
+<rect x="28" y="667" width="592" height="70" class="asset"/><text x="215" y="700" class="name">category</text><text x="165" y="728" class="fn">DropdownButtonFormField&lt;String&gt;</text>
+<rect x="28" y="757" width="592" height="70" class="asset"/><text x="220" y="790" class="name">반복 설정</text><text x="155" y="818" class="fn">_showRepeatOptions() — 반복 조건 설정</text>
+<rect x="28" y="847" width="592" height="70" class="action"/><text x="260" y="874" class="name">저장</text><text x="145" y="896" class="fn">addTodo · updateTodo — 할 일 저장</text><text x="125" y="914" class="fn">addRoutine · updateRoutine — 루틴 저장</text>
+</g>
+<path d="M715 725C850 725 850 635 1000 635" class="route"/><rect x="690" y="650" width="320" height="38" rx="12" class="tag"/><text x="710" y="676" class="tagtext">Get.to(TaskFormPage) — 등록·수정 화면</text>
+
+<!-- TRASH -->
+<g transform="translate(1940,160)"><rect width="650" height="950" rx="30" class="phone"/><text x="28" y="50" class="screen">휴지통 화면</text>
+<rect x="28" y="75" width="592" height="70" class="asset"/><text x="210" y="110" class="name">AppBar + 뒤로</text><text x="160" y="138" class="fn">기본 leading — 이전 화면 복귀</text>
+<rect x="28" y="170" width="592" height="250" class="asset"/><text x="220" y="260" class="name">TrashCard list</text><rect x="60" y="320" width="360" height="62" class="action"/><text x="190" y="357" class="name">restore</text><rect x="440" y="320" width="145" height="62" class="pending"/><text x="480" y="357" class="name">delete</text>
+<text x="125" y="455" class="fn">_restore() — 삭제한 할 일 복구</text><text x="72" y="490" class="fn">_confirmPermanentDelete() — 영구 삭제 확인 및 실행</text>
+<rect x="28" y="545" width="592" height="235" class="asset"/><text x="205" y="640" class="name">empty state</text><text x="130" y="680" class="small">deletedTodos.isEmpty일 때 표시</text>
+<rect x="28" y="820" width="592" height="90" class="nav"/><text x="220" y="858" class="name">초기 데이터</text><text x="155" y="888" class="fn">Obx(deletedTodos) — 삭제 목록 갱신</text>
+</g>
+<path d="M650 220C820 125 1760 125 1940 250" class="route"/><rect x="1270" y="105" width="270" height="38" rx="12" class="tag"/><text x="1290" y="131" class="tagtext">Get.to(TrashPage) — 휴지통 화면</text>
+
+<!-- CALENDAR -->
+<g transform="translate(2885,160)"><rect width="650" height="950" rx="30" class="phone"/><text x="28" y="50" class="screen">캘린더 화면</text>
+<rect x="330" y="20" width="290" height="82" class="action"/><text x="410" y="47" class="name">검색 / 필터</text><text x="370" y="70" class="fn">search toggle — 검색창 열기</text><text x="375" y="92" class="fn">_showFilters() — 필터 열기</text>
+<rect x="28" y="110" width="592" height="420" class="asset"/><text x="205" y="260" class="name">TableCalendar</text><text x="120" y="302" class="fn">calendarTodosFor — 일정 조회</text><text x="115" y="337" class="fn">onDaySelected 콜백 — selectedDay 변경</text>
+<rect x="28" y="550" width="592" height="225" class="asset"/><text x="175" y="615" class="name">선택 날짜 TodoCard</text><text x="150" y="652" class="fn">toggle — 완료 상태 변경</text><text x="150" y="685" class="fn">openTodoEditor — 수정 화면</text><text x="150" y="718" class="fn">deleteTodoWithScope — 삭제</text>
+<rect x="485" y="720" width="135" height="90" class="action"/><text x="530" y="758" class="name">추가</text><text x="493" y="786" class="fn">등록 화면 이동</text>
+<rect x="28" y="820" width="592" height="90" class="nav"/><text x="220" y="858" class="name">NavigationBar</text><text x="185" y="888" class="fn">selectedTab = 1 — 캘린더</text>
+</g>
+
+<!-- ROUTINE -->
+<g transform="translate(65,1280)"><rect width="650" height="950" rx="30" class="phone"/><text x="28" y="50" class="screen">루틴 화면</text>
+<rect x="28" y="85" width="592" height="90" class="asset"/><text x="205" y="120" class="name">_SummaryChip</text><text x="135" y="150" class="fn">전체 · 활성 · 비활성 개수 표시</text>
+<rect x="28" y="200" width="592" height="430" class="asset"/><text x="220" y="335" class="name">RoutineCard list</text><text x="145" y="380" class="fn">RoutineFormPage — 루틴 수정 화면</text><text x="145" y="420" class="fn">toggleRoutine() — 활성 상태 변경</text><text x="145" y="460" class="fn">_confirmDelete() — 루틴 삭제 확인</text>
+<rect x="475" y="580" width="145" height="90" class="action"/><text x="525" y="618" class="name">추가</text><text x="485" y="646" class="fn">반복 등록 모드</text>
+<rect x="28" y="700" width="592" height="100" class="asset"/><text x="220" y="742" class="name">empty state</text><text x="220" y="772" class="fn">_EmptyRoutines</text>
+<rect x="28" y="820" width="592" height="90" class="nav"/><text x="220" y="858" class="name">NavigationBar</text><text x="195" y="888" class="fn">selectedTab = 2 — 루틴</text>
+</g>
+
+<!-- FOCUS -->
+<g transform="translate(1000,1280)"><rect width="650" height="950" rx="30" class="phone"/><text x="28" y="50" class="screen">집중 화면</text>
+<rect x="28" y="85" width="592" height="70" class="asset"/><text x="185" y="115" class="name">Todo Dropdown</text><text x="135" y="143" class="fn">selectedFocusTodoId — 집중 대상 선택</text>
+<rect x="28" y="170" width="592" height="70" class="asset"/><text x="190" y="198" class="name">집중 진행률</text><text x="112" y="225" class="fn">focusSecondsForTodo · remainingEstimatedSecondsFor</text>
+<rect x="28" y="255" width="592" height="62" class="asset"/><text x="165" y="282" class="name">remaining focus time</text><text x="155" y="307" class="fn">remainingEstimatedSecondsFor</text>
+<rect x="28" y="332" width="592" height="235" class="asset"/><text x="235" y="420" class="name">타이머 원형 UI</text><text x="145" y="460" class="fn">_tick() — 시간 갱신 · _syncTicker() — 동기화</text>
+<rect x="28" y="582" width="285" height="75" class="action"/><text x="92" y="614" class="name">시작 / 일시정지</text><text x="72" y="644" class="fn" style="font-size:14px">_toggleTimer() — 타이머 제어</text><rect x="335" y="582" width="285" height="75" class="asset"/><text x="430" y="612" class="name">집중 완료</text><text x="370" y="642" class="fn" style="font-size:14px">_complete() → _finishAndPrompt()</text>
+<rect x="28" y="672" width="592" height="55" class="asset"/><text x="220" y="698" class="name">오늘의 계획 목록</text><text x="230" y="719" class="fn">todayTodos</text>
+<rect x="28" y="742" width="592" height="58" class="asset"/><text x="185" y="768" class="name">오늘 예상 / 실제 집중</text><text x="175" y="791" class="fn">todayFocusSeconds</text>
+<rect x="28" y="820" width="592" height="90" class="nav"/><text x="220" y="858" class="name">NavigationBar</text><text x="195" y="888" class="fn">selectedTab = 3 — 집중</text>
+</g>
+
+<!-- STATS -->
+<g transform="translate(1940,1280)"><rect width="650" height="950" rx="30" class="phone"/><text x="28" y="50" class="screen">통계 화면</text>
+<rect x="28" y="85" width="592" height="105" class="asset"/><text x="235" y="125" class="name">Metric cards</text><text x="115" y="158" class="fn">created · completed · current incomplete</text>
+<rect x="28" y="215" width="592" height="105" class="asset"/><text x="175" y="250" class="name">생성 / 완료 차트</text><text x="130" y="280" class="fn">weeklyCreatedCountsFor — 생성 집계</text><text x="120" y="305" class="fn">weeklyCompletedCountsFor — 완료 집계</text>
+<rect x="28" y="340" width="592" height="72" class="asset"/><text x="205" y="370" class="name">카테고리별 완료율</text><text x="145" y="400" class="fn">categoryCompletionStats</text>
+<rect x="28" y="422" width="592" height="72" class="asset"/><text x="205" y="452" class="name">우선순위별 완료율</text><text x="150" y="482" class="fn">priorityCompletionStats</text>
+<rect x="28" y="504" width="592" height="80" class="asset"/><text x="225" y="535" class="name">기한 준수</text><text x="115" y="565" class="fn">completedOnTimeCount · delayedCount</text>
+<rect x="28" y="594" width="592" height="86" class="asset"/><text x="205" y="628" class="name">실제 집중 시간</text><text x="145" y="658" class="fn">weeklyFocusSecondsFor — 주간 집중 집계</text>
+<rect x="28" y="690" width="592" height="110" class="asset"/><text x="175" y="733" class="name">this week vs last week</text><text x="120" y="768" class="fn">weekOffset 0 / -1 comparison</text>
+<rect x="28" y="820" width="592" height="90" class="nav"/><text x="220" y="858" class="name">NavigationBar</text><text x="195" y="888" class="fn">selectedTab = 4 — 통계</text>
+</g>
+
+<!-- shared controller -->
+<g transform="translate(2885,1280)"><rect width="650" height="950" rx="24" class="phone"/><text x="28" y="50" class="screen">공용 초기화 · 데이터</text>
+<rect x="28" y="85" width="592" height="145" class="asset"/><text x="170" y="125" class="name">TodoController.onInit</text><text x="145" y="160" class="fn">loadTodos() — 저장 데이터 초기 로드</text><text x="125" y="195" class="small">Home 초기 selectedTab = 0 (목록)</text>
+<rect x="28" y="255" width="592" height="210" class="asset"/><text x="205" y="300" class="name">TodoController</text><text x="125" y="338" class="fn">todos · routines · workSessions</text><text x="115" y="370" class="fn">deletedTodos · activeWorkSession</text><text x="80" y="402" class="fn">calendarSearchQuery · calendar filters</text><text x="125" y="440" class="small">Obx가 모든 화면을 자동 재구성</text>
+<rect x="28" y="490" width="592" height="210" class="action"/><text x="205" y="530" class="name">TodoDatabase</text><text x="130" y="565" class="fn">insertTodo · updateTodo — 저장·수정</text><text x="145" y="598" class="fn">moveToTrash · readTodos — 삭제·조회</text><text x="105" y="631" class="fn">restoreTodo · permanentlyDeleteTodo — 복구·영구삭제</text><text x="220" y="670" class="small">sqflite Repository</text>
+<rect x="28" y="725" width="592" height="185" class="asset"/><text x="245" y="770" class="name">SQLite v6</text><text x="90" y="810" class="fn">todos(+created_at · completed_at)</text><text x="105" y="845" class="fn">deleted_todos · routines · work_sessions</text><text x="135" y="885" class="small">앱 종료 후에도 데이터 유지</text>
+</g>
+
+<!-- tab routes -->
+<path d="M690 1040C780 1170 200 1160 200 1280" class="route dash"/><text x="240" y="1160" class="fn">tab 2 — 루틴 화면</text>
+<path d="M690 1060C850 1210 1320 1170 1320 1280" class="route dash"/><text x="1210" y="1195" class="fn">tab 3 — 집중 화면</text>
+<path d="M690 1080C900 1240 2260 1170 2260 1280" class="route dash"/><text x="2150" y="1195" class="fn">tab 4 — 통계 화면</text>
+<path d="M690 1020C850 1125 3190 1140 3190 1110" class="route dash"/><text x="3030" y="1140" class="fn">tab 1 — 캘린더 화면</text>
+
+<text x="65" y="2345" class="small">회색 테두리=화면 배치 에셋 · 초록=실행 및 데이터 액션 · 보라=하단 탭 또는 Get.to 화면 이동</text>
+</svg>

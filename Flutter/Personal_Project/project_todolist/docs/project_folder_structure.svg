@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<defs><style>
+.bg{fill:#fafbfc}.title{font:700 42px 'Malgun Gothic',sans-serif;fill:#171a25}.sub{font:19px 'Malgun Gothic',sans-serif;fill:#70798c}.card{fill:#fff;stroke:#d9dcef;stroke-width:2}.head{fill:#f0f1ff}.folder{font:700 21px Consolas,'Malgun Gothic',monospace;fill:#292e3b}.file{font:16px Consolas,'Malgun Gothic',monospace;fill:#555dd6}.viewfile{font:14px Consolas,'Malgun Gothic',monospace;fill:#555dd6}.desc{font:14px 'Malgun Gothic',sans-serif;fill:#70798c}.root{fill:#626cf5}.rootText{font:700 25px Consolas,monospace;fill:#fff}.line{stroke:#aeb5c2;stroke-width:2;fill:none}.dot{fill:#626cf5}.badge{fill:#edf9f3}.badgeText{font:700 13px 'Malgun Gothic',sans-serif;fill:#27865a}
+</style></defs>
+<rect width="1920" height="1080" class="bg"/>
+<text x="60" y="62" class="title">TODOLIST 프로젝트 폴더 구성</text>
+<text x="60" y="96" class="sub">실제 개발 소스 중심 구조 · 빌드 결과물과 IDE 자동 생성 파일은 생략</text>
+
+<rect x="60" y="132" width="390" height="72" rx="20" class="root"/><text x="88" y="177" class="rootText">project_todolist/</text>
+<path d="M255 204V1010" class="line"/>
+
+<!-- root groups -->
+<circle cx="255" cy="252" r="6" class="dot"/><path d="M255 252H490" class="line"/>
+<circle cx="255" cy="806" r="6" class="dot"/><path d="M255 806H490" class="line"/>
+<circle cx="255" cy="928" r="6" class="dot"/><path d="M255 928H490" class="line"/>
+
+<!-- lib card -->
+<g transform="translate(490,132)"><rect width="850" height="620" rx="24" class="card"/><path d="M24 0H826Q850 0 850 24V64H0V24Q0 0 24 0" class="head"/><text x="26" y="42" class="folder">lib/</text><text x="115" y="42" class="desc">Flutter 애플리케이션 소스</text>
+<line x1="425" y1="84" x2="425" y2="590" class="line"/>
+
+<text x="28" y="105" class="folder">main.dart</text><text x="205" y="105" class="desc">앱 시작점 · GetMaterialApp 설정</text>
+<text x="28" y="150" class="folder">controller/</text><text x="28" y="180" class="file">└─ todo_controller.dart</text><text x="250" y="180" class="desc">상태·화면·통계</text>
+<text x="28" y="225" class="folder">data/</text><text x="28" y="255" class="file">└─ todo_database.dart</text><text x="250" y="255" class="desc">SQLite Repository</text>
+<text x="28" y="300" class="folder">model/</text><text x="28" y="332" class="file">├─ todo.dart</text><text x="28" y="362" class="file">├─ routine.dart</text><text x="28" y="392" class="file">└─ work_session.dart</text><text x="250" y="360" class="desc">할 일·루틴·집중 모델</text>
+<text x="28" y="442" class="folder">theme/</text><text x="28" y="472" class="file">└─ app_theme.dart</text><text x="250" y="472" class="desc">공통 색상·테마</text>
+<text x="28" y="522" class="folder">widget/</text><text x="28" y="552" class="file">└─ todo_card.dart</text><text x="250" y="552" class="desc">재사용 할 일 카드</text>
+
+<text x="455" y="105" class="folder">view/</text><text x="455" y="139" class="viewfile">├─ home.dart</text><text x="690" y="139" class="desc">메인 탭과 공용 FAB</text>
+<text x="455" y="174" class="viewfile">├─ todo_list_page.dart</text><text x="690" y="174" class="desc">목록·검색·필터</text>
+<text x="455" y="209" class="viewfile">├─ task_form_page.dart</text><text x="690" y="209" class="desc">할 일·루틴 통합 입력</text>
+<text x="455" y="244" class="viewfile">├─ routine_form_page.dart</text><text x="690" y="244" class="desc">루틴 입력 래퍼</text>
+<text x="455" y="279" class="viewfile">├─ trash_page.dart</text><text x="690" y="279" class="desc">복구·영구 삭제</text>
+<text x="455" y="314" class="viewfile">├─ calendar_page.dart</text><text x="690" y="314" class="desc">캘린더·날짜별 일정</text>
+<text x="455" y="349" class="viewfile">├─ routine_page.dart</text><text x="690" y="349" class="desc">루틴 조회·관리</text>
+<text x="455" y="384" class="viewfile">├─ focus_page.dart</text><text x="690" y="384" class="desc">집중 타이머</text>
+<text x="455" y="419" class="viewfile">├─ statistics_page.dart</text><text x="690" y="419" class="desc">주간 데이터 분석</text>
+<text x="455" y="454" class="viewfile">└─ todo_action_dialogs.dart</text><text x="690" y="454" class="desc">수정·삭제 범위 처리</text>
+</g>
+
+<!-- docs -->
+<g transform="translate(490,775)"><rect width="850" height="125" rx="22" class="card"/><rect width="165" height="125" rx="22" class="head"/><text x="24" y="45" class="folder">docs/</text><text x="24" y="74" class="desc">기획 문서</text><text x="195" y="38" class="file">screen_plans/</text><text x="365" y="38" class="desc">7개 화면별 기획안 이미지</text><text x="195" y="72" class="file">todolist_asset_layout_map.*</text><text x="515" y="72" class="desc">전체 화면 구성도</text><text x="195" y="106" class="file">todolist_function_catalog.*</text><text x="515" y="106" class="desc">함수·Getter 목록</text></g>
+
+<!-- test -->
+<g transform="translate(490,920)"><rect width="850" height="75" rx="20" class="card"/><rect width="165" height="75" rx="20" class="head"/><text x="24" y="45" class="folder">test/</text><text x="195" y="45" class="file">widget_test.dart</text><text x="430" y="45" class="desc">위젯 동작과 주요 사용자 흐름 검증</text></g>
+
+<!-- platform/config -->
+<g transform="translate(1380,132)"><rect width="480" height="300" rx="24" class="card"/><path d="M24 0H456Q480 0 480 24V64H0V24Q0 0 24 0" class="head"/><text x="24" y="42" class="folder">플랫폼 · 설정</text>
+<text x="28" y="104" class="folder">android/</text><text x="190" y="104" class="desc">Android 네이티브 설정</text>
+<text x="28" y="145" class="folder">ios/</text><text x="190" y="145" class="desc">iOS 네이티브 설정</text>
+<text x="28" y="191" class="file">pubspec.yaml</text><text x="190" y="191" class="desc">패키지·Flutter 설정</text>
+<text x="28" y="230" class="file">analysis_options.yaml</text><text x="250" y="230" class="desc">Dart 분석 규칙</text>
+<text x="28" y="269" class="file">README.md</text><text x="190" y="269" class="desc">프로젝트 안내</text></g>
+
+<g transform="translate(1380,462)"><rect width="480" height="205" rx="24" class="card"/><path d="M24 0H456Q480 0 480 24V64H0V24Q0 0 24 0" class="head"/><text x="24" y="42" class="folder">자동 생성 · 제외</text>
+<text x="28" y="106" class="file">.dart_tool/ · build/</text><text x="28" y="132" class="desc">패키지 캐시와 빌드 결과물</text>
+<text x="28" y="169" class="file">.idea/ · *.iml · .metadata</text><text x="28" y="194" class="desc">IDE 및 Flutter 도구가 관리하는 파일</text></g>
+
+<g transform="translate(1380,700)"><rect width="480" height="225" rx="24" class="card"/><path d="M24 0H456Q480 0 480 24V64H0V24Q0 0 24 0" class="head"/><text x="24" y="42" class="folder">의존 방향</text>
+<rect x="28" y="90" width="100" height="42" rx="12" class="badge"/><text x="49" y="117" class="badgeText">VIEW</text><text x="151" y="117" class="desc">→ Controller → Repository → SQLite</text>
+<rect x="28" y="151" width="100" height="42" rx="12" class="badge"/><text x="44" y="178" class="badgeText">MODEL</text><text x="151" y="178" class="desc">화면·Controller·DB 사이 데이터 전달</text></g>
+
+<text x="60" y="1040" class="desc">기준 경로: C:/My/Flutter/project_todolist · 2026-09-01 현재 프로젝트 구조</text>
+</svg>

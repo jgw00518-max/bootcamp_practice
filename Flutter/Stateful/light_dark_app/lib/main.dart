@@ -1,0 +1,45 @@
+import 'package:flutter/material.dart';
+import 'package:light_dark_app/home.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatefulWidget {
+
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  ThemeMode _themeMode = ThemeMode.system;
+
+  _changeThemeMode(ThemeMode themeMode){
+    _themeMode = themeMode;
+    setState(() {});
+  }
+
+  static const seedColor = Colors.red;
+  
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      themeMode: _themeMode,
+      theme: ThemeData(
+        brightness: Brightness.light,
+        colorSchemeSeed: seedColor
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        colorSchemeSeed: seedColor
+      ),
+
+      home: Home(onChangeTheme: _changeThemeMode),
+    );
+  }
+}
